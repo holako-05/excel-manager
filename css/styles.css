@@ -1,26 +1,63 @@
 ::selection {
-  background-color: #1b7444;
-  color: white;
+    background-color: #1b7444;
+    color: white;
 }
+
 input:focus {
-  outline: none;
+    outline: none;
 }
+
 select:focus {
-  outline: none;
+    outline: none;
 }
+
 #dataTables_length {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
+
 #dataTable_filter {
-  margin-bottom: 25px;
+    margin-bottom: 25px;
 }
+
 #dataTables_paginate {
-  margin-top: 25px;
+    margin-top: 25px;
 }
+
+#dataTable_paginate > span > a.paginate_button.current {
+    background-color: #1b7444 !important;
+    color: white !important;
+}
+
 #dataTables_info {
-  margin-top: 25px;
+    margin-top: 25px;
 }
+
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-  background-color: #1b7444 !important;
-  color: white !important;
+    background-color: #1b7444 !important;
+    color: white !important;
+}
+
+.dataTables_wrapper .dataTables_scroll {
+    overflow-y: auto; /* Enable vertical scroll if needed */
+}
+
+/* Change the color of the horizontal scrollbar */
+.dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar {
+    background-color: #1b7444; /* Set the background color */
+    width: 12px; /* Set the width of the scrollbar */
+}
+
+.dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar-thumb {
+    background-color: #1b7444; /* Set the color of the scrollbar thumb */
+    border-radius: 6px; /* Set the border-radius of the scrollbar thumb */
+}
+
+/* Change the color of the vertical scrollbar */
+.dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar-track {
+    background-color: #2aa160; /* Set the background color */
+}
+
+.dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar-thumb {
+    background-color: #1b7444; /* Set the color of the scrollbar thumb */
+    border-radius: 6px; /* Set the border-radius of the scrollbar thumb */
 }
