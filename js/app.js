@@ -4,7 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const inputFieldsContainer = document.getElementById("inputFieldsContainer");
     const message = document.getElementById("message");
 
-    let dataTable = $("#dataTable").DataTable();
+    function toggleDataTableVisibility() {
+        const dataTableContainer = document.querySelector(".float-right");
+        const tableRows = dataTableContainer.querySelectorAll("#dataTable tbody tr");
+        if (tableRows.length > 0) {
+            dataTableContainer.style.display = "block";
+        } else {
+            dataTableContainer.style.display = "none";
+        }
+    }
+
+    let dataTable = $("#dataTable").DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/fr-FR.json',
+        },
+    });
+    toggleDataTableVisibility();
 
     fileSelect.addEventListener("change", function () {
         const selectedFile = fileSelect.options[fileSelect.selectedIndex].value;
@@ -27,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.headers.forEach((header) => {
                     const th = document.createElement("th");
                     th.textContent = header;
-                    th.className = "px-6 py-2 text-gray-500"
+                    th.className = "px-6 py-2 text-white"
                     headerRow.appendChild(th);
                 });
 
@@ -35,29 +50,31 @@ document.addEventListener("DOMContentLoaded", function () {
                 inputFieldsContainer.innerHTML = "";
                 data.headers.forEach((header, index) => {
                     const inputContainer = document.createElement("div");
-                    inputContainer.className="relative mb-3 "
-                    inputContainer.setAttribute("data-te-input-wrapper-init","")
+                    inputContainer.className = "mr-3 mb-3"
                     const inputLabel = document.createElement("label");
                     const inputField = document.createElement("input");
 
                     inputLabel.setAttribute("for", `inputField${index}`);
-                    inputLabel.className = "pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary";
+                    inputLabel.className = "block text-sm font-semibold leading-6 text-[#1b7444] font-semibold";
                     inputField.setAttribute("type", "text");
                     inputLabel.innerHTML = header;
                     inputField.setAttribute("id", `inputField${index}`);
                     inputField.setAttribute("placeholder", header);
-                    inputField.className = "peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0";
-                    inputContainer.appendChild(inputField);
+                    inputField.className = "rounded-md border-[#1b7444] border text-[#1b7444] px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6";
                     inputContainer.appendChild(inputLabel);
+                    inputContainer.appendChild(inputField);
                     inputFieldsContainer.appendChild(inputContainer);
-                    // inputFieldsContainer.appendChild(inputLabel);
 
                 });
 
                 // Initialize DataTables
                 dataTable = $("#dataTable").DataTable({
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.5/i18n/fr-FR.json',
+                    },
                     processing: true,
                     serverSide: true,
+                    scrollX: true,
                     ajax: {
                         url: "php/handler.php",
                         type: "GET",
@@ -76,6 +93,8 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch((error) => {
                 console.error("Error fetching file data:", error);
             });
+        toggleDataTableVisibility();
+
     });
 
     function addRowToTable(rowData) {
@@ -122,10 +141,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                     addRowToTable(inputValues);
                     message.innerHTML =
-                        '<p class="p-2 bg-green-500 text-white">Saved successfully</p>';
+                        '<p class="p-2 bg-[#12512f] text-white rounded">Enregistré avec succès</p>';
                 } else {
                     message.innerHTML =
-                        '<p class="p-2 bg-red-500 text-white">Error saving data</p>';
+                        '<p class="p-2 bg-red-500 text-white rounded">Erreur lors de l\'enregistrement des données</p>';
                 }
             });
     });

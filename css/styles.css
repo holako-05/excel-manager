@@ -1,0 +1,26 @@
+::selection {
+  background-color: #1b7444;
+  color: white;
+}
+input:focus {
+  outline: none;
+}
+select:focus {
+  outline: none;
+}
+#dataTables_length {
+  margin-bottom: 25px;
+}
+#dataTable_filter {
+  margin-bottom: 25px;
+}
+#dataTables_paginate {
+  margin-top: 25px;
+}
+#dataTables_info {
+  margin-top: 25px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background-color: #1b7444 !important;
+  color: white !important;
+}
