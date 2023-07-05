@@ -45,19 +45,26 @@ select:focus {
 .dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar {
     background-color: #1b7444; /* Set the background color */
     width: 12px; /* Set the width of the scrollbar */
+    height: 10px !important;
+
 }
 
 .dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar-thumb {
     background-color: #1b7444; /* Set the color of the scrollbar thumb */
     border-radius: 6px; /* Set the border-radius of the scrollbar thumb */
+    height: 10px !important;
+
 }
 
 /* Change the color of the vertical scrollbar */
 .dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar-track {
     background-color: #2aa160; /* Set the background color */
+    height: 10px !important;
 }
 
 .dataTables_wrapper .dataTables_scrollBody::-webkit-scrollbar-thumb {
     background-color: #1b7444; /* Set the color of the scrollbar thumb */
     border-radius: 6px; /* Set the border-radius of the scrollbar thumb */
+    height: 10px !important;
+
 }
