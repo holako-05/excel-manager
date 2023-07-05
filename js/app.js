@@ -7,10 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function toggleDataTableVisibility() {
         const dataTableContainer = document.querySelector(".float-right");
         const tableRows = dataTableContainer.querySelectorAll("#dataTable tbody tr");
+        const saveButton = document.getElementById("saveButton");
         if (tableRows.length > 0) {
             dataTableContainer.style.display = "block";
+            saveButton.style.display = "block";
         } else {
             dataTableContainer.style.display = "none";
+            saveButton.style.display = "none";
         }
     }
 
