@@ -121,13 +121,23 @@ document.addEventListener("DOMContentLoaded", function () {
         // Collect input values dynamically
         const inputValues = [];
         let index = 0;
+        let isFieldsEmpty = false;
+
         while (true) {
             const inputField = document.getElementById(`inputField${index}`);
             if (!inputField) break;
             inputValues.push(inputField.value);
+            if (inputField.value.trim() === "") {
+                isFieldsEmpty = true;
+                break;
+            }
             index++;
         }
-
+        if (isFieldsEmpty) {
+            message.innerHTML =
+                '<p class="p-2 px-4 bg-red-500 rounded-md text-white">Les champs ne peuvent pas être vides</p>';
+            return; // Stop execution if fields are empty
+        }
         fetch("php/handler.php?action=save", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
