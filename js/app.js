@@ -49,8 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Dynamically create input fields
                 inputFieldsContainer.innerHTML = "";
                 data.headers.forEach((header, index) => {
-                    header = header.toLowerCase();
-                    header = capitalizeHeader(header);
                     const inputContainer = document.createElement("div");
                     inputContainer.className = "mr-3 mb-3"
                     const inputLabel = document.createElement("label");
@@ -68,13 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     inputFieldsContainer.appendChild(inputContainer);
 
                 });
-                function capitalizeHeader(header) {
-                    return header
-                        .split(" ")
-                        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                        .join(" ");
-                }
-
                 // Initialize DataTables
                 dataTable = $("#dataTable").DataTable({
                     language: {
